@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 310563839037212607}
   - component: {fileID: 310563839037212610}
   - component: {fileID: 310563839037212611}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3d918c510aa2043a8e69d4f95b6717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 4
+  acceleration: 10
+  maxSpeed: 4
+  speed: 0
 --- !u!212 &310563839037212604
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -177,7 +179,7 @@ GameObject:
   - component: {fileID: 310563839838166297}
   - component: {fileID: 310563839838166303}
   - component: {fileID: 310563839838166302}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Groundcheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
