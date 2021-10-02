@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public float acceleration = 4;
     public float maxSpeed = 4;
@@ -16,6 +16,12 @@ public class PlayerController : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    void OnDisable()
+    {
+        speed = 0;
+        body.velocity = new Vector2(0, body.velocity.y);
     }
 
     void Update()
@@ -35,7 +41,6 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         MovePlayer();
-
     }
 
     private void MovePlayer()
