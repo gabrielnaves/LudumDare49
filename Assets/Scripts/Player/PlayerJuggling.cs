@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerJuggling : MonoBehaviour
@@ -6,6 +7,15 @@ public class PlayerJuggling : MonoBehaviour
     public int ballAmount = 3;
     public float ballThrowSpeed = 4;
     public GameObject ballPrefab;
+
+    List<GameObject> balls = new List<GameObject>();
+
+    public void ClearBalls()
+    {
+        foreach (var ball in balls)
+            SimplePool.Despawn(ball);
+        balls.Clear();
+    }
 
     public void StartJuggling() => StartCoroutine(StartJugglingRoutine());
 
@@ -18,6 +28,7 @@ public class PlayerJuggling : MonoBehaviour
             var ball = SimplePool.Spawn(ballPrefab, transform.position, Quaternion.identity);
             ball.GetComponent<Rigidbody2D>().velocity = CalculateBallSpeed();
             ballAmount--;
+            balls.Add(ball);
             yield return wait;
         }
     }

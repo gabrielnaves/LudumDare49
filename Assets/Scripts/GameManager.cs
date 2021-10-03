@@ -11,16 +11,22 @@ public class GameManager : MonoBehaviour
     public InputProcessor inputProcessor;
     public GameObject gameOverText;
 
-    IEnumerator Start()
+    void Start()
     {
         GameTime.OnGameTimeRanOut += OnGameEnded;
+        StartCoroutine(StartGame());
+    }
 
+    IEnumerator StartGame()
+    {
+        instructionsText.SetActive(true);
         scoreText.SetActive(false);
         gameTime.SetActive(false);
         gameOverText.SetActive(false);
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
         scoreText.SetActive(true);
         gameTime.SetActive(true);
+        gameTime.GetComponentInChildren<GameTime>().enabled = true;
         instructionsText.SetActive(false);
         playerJuggling.StartJuggling();
         ringSpawner.StartSpawning();
@@ -28,9 +34,18 @@ public class GameManager : MonoBehaviour
 
     void OnGameEnded()
     {
-        inputProcessor.enabled = false;
         gameOverText.SetActive(true);
         ringSpawner.ClearRings();
+        gameTime.SetActive(false);
+        playerJuggling.ClearBalls();
+        StartCoroutine(WaitForGameToRestart());
+    }
+
+    IEnumerator WaitForGameToRestart()
+    {
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+        yield return null;
+        StartCoroutine(StartGame());
     }
 
     void OnDestroy()
