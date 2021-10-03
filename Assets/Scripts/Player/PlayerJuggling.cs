@@ -22,12 +22,12 @@ public class PlayerJuggling : MonoBehaviour
     IEnumerator StartJugglingRoutine()
     {
         var wait = new WaitForSeconds(CalculateBallThrowingDelay());
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
-        while (ballAmount > 0)
+        int ballsToSpawn = ballAmount;
+        while (ballsToSpawn > 0)
         {
             var ball = SimplePool.Spawn(ballPrefab, transform.position, Quaternion.identity);
             ball.GetComponent<Rigidbody2D>().velocity = CalculateBallSpeed();
-            ballAmount--;
+            ballsToSpawn--;
             balls.Add(ball);
             yield return wait;
         }

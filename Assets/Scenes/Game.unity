@@ -3217,7 +3217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeText: {fileID: 1057243039}
-  matchDuration: 10
+  matchDuration: 60
   time: 0
 --- !u!224 &1982150499
 RectTransform:
