@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballAmount: 3
-  ballThrowSpeed: 12.5
+  ballThrowSpeed: 13.5
   ballPrefab: {fileID: 6901428330281563700, guid: 1dc2584ea8cc1ac41945460ab07ef887, type: 3}
 --- !u!61 &2600694089441021613
 BoxCollider2D:

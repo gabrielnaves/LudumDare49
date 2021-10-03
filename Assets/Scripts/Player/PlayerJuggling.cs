@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerJuggling : MonoBehaviour
@@ -8,7 +7,9 @@ public class PlayerJuggling : MonoBehaviour
     public float ballThrowSpeed = 4;
     public GameObject ballPrefab;
 
-    IEnumerator Start()
+    public void StartJuggling() => StartCoroutine(StartJugglingRoutine());
+
+    IEnumerator StartJugglingRoutine()
     {
         var wait = new WaitForSeconds(CalculateBallThrowingDelay());
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
