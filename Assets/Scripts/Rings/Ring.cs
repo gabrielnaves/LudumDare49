@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Ring : MonoBehaviour
 {
+    static public event System.Action OnRingCollected;
+
     Animator animator;
 
     void Awake()
@@ -14,8 +16,9 @@ public class Ring : MonoBehaviour
         animator.SetBool("Collected", false);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D _)
     {
         animator.SetBool("Collected", true);
+        OnRingCollected?.Invoke();
     }
 }
