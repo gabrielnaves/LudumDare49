@@ -47,3 +47,9 @@ TagManager:
   - name: Balls
     uniqueID: 3785679337
     locked: 0
+  - name: Foreground
+    uniqueID: 3172383523
+    locked: 0
+  - name: UI
+    uniqueID: 1831166777
+    locked: 0

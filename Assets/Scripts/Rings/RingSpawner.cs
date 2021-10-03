@@ -14,7 +14,6 @@ public class RingSpawner : MonoBehaviour
     void Start()
     {
         spawningBounds.center = transform.position;
-        StartSpawning();
     }
 
     public void StartSpawning() => StartCoroutine(SpawningRoutine());
