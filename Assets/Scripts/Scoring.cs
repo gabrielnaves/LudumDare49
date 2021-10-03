@@ -23,4 +23,9 @@ public class Scoring : MonoBehaviour
     }
 
     void UpdateScoreText() => scoreText.text = $"score: { score }";
+
+    void OnDestroy()
+    {
+        Ring.OnRingCollected -= OnRingCollected;
+    }
 }

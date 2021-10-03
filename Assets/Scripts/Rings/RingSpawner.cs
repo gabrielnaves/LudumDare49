@@ -18,6 +18,17 @@ public class RingSpawner : MonoBehaviour
 
     public void StartSpawning() => StartCoroutine(SpawningRoutine());
 
+    public void ClearRings()
+    {
+        StopAllCoroutines();
+        foreach (var ring in rings)
+        {
+            if (ring)
+                SimplePool.Despawn(ring);
+        }
+        rings.Clear();
+    }
+
     IEnumerator SpawningRoutine()
     {
         while (true)

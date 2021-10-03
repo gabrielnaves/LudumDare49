@@ -37,4 +37,11 @@ public class InputProcessor : MonoBehaviour
                Input.GetKeyDown(KeyCode.UpArrow) ||
                Input.GetKeyDown(KeyCode.W);
     }
+
+    void OnDisable()
+    {
+        InputData.Horizontal = 0;
+        InputData.Vertical = 0;
+        InputData.JumpDown = false;
+    }
 }
